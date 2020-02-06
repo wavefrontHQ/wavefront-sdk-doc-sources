@@ -17,8 +17,8 @@ You can choose to send metrics, histograms, or trace data from your application 
 
 The `WavefrontSender` interface has two implementations. Instantiate the implementation that corresponds to your choice:
 
-* Option 1: [Create a `WavefrontProxyClient`](#option-2-create-a-wavefrontproxyclient) to send data to a Wavefront proxy.
-* Option 2: [Create a `WavefrontDirectIngestionClient`](#option-1-create-a-wavefrontdirectingestionclient) to send data directly to a Wavefront service.
+* Option 1: [Create a `WavefrontProxyClient`](#Option-1-Sending-Data-via-the-Wavefront-Proxy) to send data to a Wavefront proxy.
+* Option 2: [Create a `WavefrontDirectIngestionClient`](#Option-2-Sending-Data-via-Direct-ingestion) to send data directly to a Wavefront service.
 
 ## Option 1: Sending Data via the Wavefront Proxy
 

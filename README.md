@@ -13,6 +13,8 @@ Welcome to the repository that contains documentation common to the Wavefront's 
 
 > **Note**: This repository does not include the steps on how to instrument your application using an SDK. For details on using an SDK, see the [table below](#Wavefront-SDKs) and click on a SDK under Supported Languages.
 
+The common content is categorized based on the language. For example, the `java` directory includes all the documentation that is common to the Wavefront Java SDKs.
+
 ## Wavefront SDKs
 <table id="SDKlevels" style="width: 100%">
 <tr>
