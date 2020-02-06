@@ -3,10 +3,15 @@
 Wavefront supports a suite of open source SDKs that developers can use to instrument applications for observability. The instrumented application collects and sends metrics, histograms, and/or trace data to Wavefront for storage and visualization.
 
 ## Table of Content
-* [Wavefront SDKs](#Wavefront-SDKs)
 * [What's in this repository](#What's-in-this-repository)
+* [Wavefront SDKs](#Wavefront-SDKs)
 * [License](#License)
 * [How to Contribute](#How-toContribute)
+
+## What's in this repository
+Welcome to the repository that contains documentation common to the Wavefront's SDKs! 
+
+> **Note**: This repository does not include the steps on how to instrument your application using an SDK. For details on using an SDK, see the [table below](#Wavefront-SDKs) and click on a SDK under Supported Languages.
 
 ## Wavefront SDKs
 <table id="SDKlevels" style="width: 100%">
@@ -96,11 +101,6 @@ Wavefront supports a suite of open source SDKs that developers can use to instru
 
 </tbody>
 </table> 
-
-## What's in this repository
-Welcome to the repository that contains all the common documentation that helps you use Wavefront's SDKs. 
-
-> **Note**: This repository does not include the steps on how to instrument your application using an SDK. For details on using an SDK, see the table above and click on a SDK under Supported Languages.
 
 ## License 
 [Apache 2.0 License](LICENSE).
