@@ -6,7 +6,7 @@
 * [Required Tags](#Required-Tags)
 * [Optional Tags](#Optional-Tags)
 * [Example](#Example)
-* [What's next](#What's-next)
+* [Where to Go Next](#Where-to-Go-Next)
 
 ## Overview
 Many Wavefront SDKs require you to specify _application tags_ that describe the architecture of your application as it is deployed. These tags are associated with the metrics and trace data sent from the instrumented microservices in your application. You specify a separate set of application tags for each microservice you instrument. Wavefront uses these tags to aggregate and filter data at different levels of granularity.
@@ -14,7 +14,7 @@ Many Wavefront SDKs require you to specify _application tags_ that describe the 
 Application tags and their values are encapsulated in an `ApplicationTags` object in your microservice’s code. Because the tags describe the application’s architecture as it is deployed, your code typically obtains values for the tags from a YAML configuration file, either provided by the SDK or through a custom mechanism implemented by your application.
 
 
-## Required tags
+## Required Tags
 **Required tags** enable you to drill down into the data for a particular service:
 
 | Tag    | Description    |
@@ -23,12 +23,12 @@ Application tags and their values are encapsulated in an `ApplicationTags` objec
 | `service`      | Name that identifies the microservice within your application, for example: `inventory`. Each microservice should have its own service name.       |
 
 
-## Optional tags
+## Optional Tags
 **Optional tags** enable you to use the physical topology of your application to further filter your data:
 
 |  Tag      | Description     |
 | :------------- | :------------- |
-| cluster`      | Name of a group of related hosts that serves as a cluster or region in which the application runs, for example: `us-west-2`. The default value is `none`.       |
+| `cluster`      | Name of a group of related hosts that serves as a cluster or region in which the application runs, for example: `us-west-2`. The default value is `none`.       |
 | `shard`      | Name of a subgroup of hosts within a cluster that serve as a partition, replica, shard, or mirror, for example: `secondary`. The default value is `none`.       |
 
 Optionally, you can add custom tags specific to your application in the form of a `Map` (see example below).
@@ -54,8 +54,9 @@ ApplicationTags applicationTags = new ApplicationTags.Builder(application, servi
     build();
 ```
 
-## What's next
-Click on the Java SDK you were using to continue instrumenting your applications with Wavefront.
+## Where to Go Next
+
+To continue configuring your application with the selected Wavefront Java SDK, click the corresponding link in the table below.
 
 <table id="SDKlevels" style="width: 100%">
 <tr>

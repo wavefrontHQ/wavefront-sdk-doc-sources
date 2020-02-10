@@ -9,9 +9,10 @@ Wavefront supports a suite of open source SDKs that developers can use to instru
 * [How to Contribute](#How-toContribute)
 
 ## What's in this repository
-Welcome to the repository that contains documentation common to the Wavefront's SDKs! 
 
-> **Note**: This repository does not include the steps on how to instrument your application using an SDK. For details on using an SDK, see the [table below](#Wavefront-SDKs) and click on a SDK under Supported Languages.
+This repository contains documentation common to several Wavefront SDKs. We expect that you'll read this information as part of learning about one of the SDKs. It's not meant for standalone consumption.
+
+> **Note**: For details on our SDKs and how to use them, click one of the links in the table below.
 
 The common content is categorized based on the language. For example, the `java` directory includes all the documentation that is common to the Wavefront Java SDKs.
 
@@ -112,5 +113,4 @@ Want to contribute? Reach out to us with this good news!
 
 * Contact Wavefront by VMware: wavefront@vmware.com
 * Slack: wavefront-public.slack.com
-* Join the [Wavefront community](https://communities.vmware.com/community/vmtn/wavefront/overview).
 * If you run into any issues, let us know by creating a GitHub issue in the specific repository.

@@ -6,16 +6,16 @@
 * [Option 1: Sending Data via the Wavefront Proxy](#Option-1-Sending-Data-via-the-Wavefront-Proxy)
 * [Option 2: Sending Data via Direct ingestion](#Option-2-Sending-Data-via-Direct-ingestion)
 * [Share a WavefrontSender](#Share-a-WavefrontSender)
-* [What's next](#What's-next)
+* [Where to Go Next](#Where-toGoNext)
 
 ## Overview
 
-You can choose to send metrics, histograms, or trace data from your application to the Wavefront service using one of the following techniques:
+You can send metrics, histograms, or trace data from your application to the Wavefront service using a Wavefront proxy or direct ingestions.
 
 * Use a [**Wavefront proxy**](https://docs.wavefront.com/proxies.html), which then forwards the data to the Wavefront service. This is the recommended choice for a large-scale deployment that needs resilience to internet outages, control over data queuing and filtering, and more.
 * Use [**direct ingestion**](https://docs.wavefront.com/direct_ingestion.html) to send the data directly to the Wavefront service. This is the simplest way to get up and running quickly. 
 
-The `WavefrontSender` interface has two implementations. Instantiate the implementation that corresponds to your choice:
+The `WavefrontSender` interface has two implementations:
 
 * Option 1: [Create a `WavefrontProxyClient`](#Option-1-Sending-Data-via-the-Wavefront-Proxy) to send data to a Wavefront proxy.
 * Option 2: [Create a `WavefrontDirectIngestionClient`](#Option-2-Sending-Data-via-Direct-ingestion) to send data directly to a Wavefront service.
@@ -23,14 +23,15 @@ The `WavefrontSender` interface has two implementations. Instantiate the impleme
 ## Option 1: Sending Data via the Wavefront Proxy
 
 >**Prerequisite**
->Before your application can use a `WavefrontProxyClient`, you must [set up and start a Wavefront proxy](https://github.com/wavefrontHQ/java/tree/master/proxy#set-up-a-wavefront-proxy).
+>Before your application can use a `WavefrontProxyClient`, you must [set up and start a Wavefront proxy](https://docs.wavefront.com/proxies_installing.html).
 
-When sending data via the Wavefront proxy, you need to create a `WavefrontProxyClient`. You need to build it with the information needed to send data to a Wavefront proxy, including:
+When sending data via the Wavefront proxy, you need to create a `WavefrontProxyClient`. Include the following information.
 
 * The name of the host that will run the Wavefront proxy.
 * One or more proxy listening ports to send data to. The ports you specify depend on the kinds of data you want to send (metrics, histograms, and/or trace data). You must specify at least one listener port. 
 * Optional settings for tuning communication with the proxy.
 
+> **Note**: See [Advanced Proxy Configuration and Installation](https://docs.wavefront.com/proxies_configuring.html) for details:
 
 ```java
 // Create the builder with the proxy hostname or address
@@ -54,7 +55,7 @@ wfProxyClientBuilder.flushIntervalSeconds(2);
 // Create the WavefrontProxyClient
 WavefrontSender wavefrontSender = wfProxyClientBuilder.build();
  ```
-**Note:** When you [set up a Wavefront proxy](https://github.com/wavefrontHQ/java/tree/master/proxy#set-up-a-wavefront-proxy) on the specified proxy host, you specify the port it will listen to for each type of data to be sent. The `WavefrontProxyClient` must send data to the same ports that the Wavefront proxy listens to. Consequently, the port-related builder methods must specify the same port numbers as the corresponding proxy configuration properties: 
+**Note:** When you set up a Wavefront proxy on the specified proxy host, you specify the port it will listen to for each type of data to be sent. The `WavefrontProxyClient` must send data to the same ports that the Wavefront proxy listens to. Consequently, the port-related builder methods must specify the same port numbers as the corresponding proxy configuration properties: 
 
 | `WavefrontProxyClient` builder method | Corresponding property in `wavefront.conf` |
 | ----- | -------- |
@@ -65,13 +66,12 @@ WavefrontSender wavefrontSender = wfProxyClientBuilder.build();
 
 ## Option 2: Sending Data via Direct ingestion
 
-when sending data via direct ingestion, you need to create a `WavefrontDirectIngestionClient`, and build it with the information it needs to send data directly to Wavefront.
+When sending data via direct ingestion, you need to create a `WavefrontDirectIngestionClient`, and build it with the Wavefront URL and API token to send data directly to Wavefront.
 
-### Step 1. Obtain Wavefront Access Information
-Gather the following access information:
-
-* Identify the URL of your Wavefront instance. This is the URL you connect to when you log in to Wavefront, typically something like `https://<domain>.wavefront.com`.
-* In Wavefront, verify that you have Direct Data Ingestion permission, and [obtain an API token](http://docs.wavefront.com/wavefront_api.html#generating-an-api-token).
+>**Prerequisite**
+> * Verify that you have the Direct Data Ingestion permission. For details, see [Examine Groups and Permissions](https://docs.wavefront.com/users_account_managing.html#examine-groups-and-permissions).
+> * The URL of your Wavefront instance. This is the URL you connect to when you log in to Wavefront, typically something like `https://<domain>.wavefront.com`.
+> * [Obtain the API token](http://docs.wavefront.com/wavefront_api.html#generating-an-api-token).
 
 ### Step 2. Initialize the WavefrontDirectIngestionClient
 You initialize a `WavefrontDirectIngestionClient` by building it with the access information you obtained in Step 1.
@@ -82,7 +82,7 @@ You can optionally call builder methods to tune the following ingestion properti
 * Flush interval - Interval for flushing data from the `WavefrontSender` directly to Wavefront.
 * Batch size - Amount of data to send to Wavefront in each flush interval.
 
-Together, the batch size and flush interval control the maximum theoretical throughput of the `WavefrontSender`. You should override the defaults _only_ to set higher values.
+Together, the batch size and flush interval control the maximum theoretical throughput of the `WavefrontSender`. Override the defaults _only_ to set higher values.
 
 ```java
 // Create a builder with the Wavefront URL and a Wavefront API token
@@ -104,8 +104,6 @@ WavefrontSender wavefrontSender = wfDirectIngestionClientBuilder.build();
  ```
 
 ## Share a WavefrontSender
-
-Various Wavefront SDKs for Java use this library and require a `WavefrontSender` instance.
 
 If you are using multiple Wavefront Java SDKs within the same JVM process, you can instantiate the `WavefrontSender` just once and share it among the SDKs. 
  
@@ -132,8 +130,9 @@ DropwizardMetricsReporter metricsReporter =
 
 **Note:** If you use SDKs in different JVM processes, you must instantiate one `WavefrontSender` instance per JVM process.
 
-## What's next
-Click on the Java SDK you were using to continue instrumenting your applications with Wavefront.
+## Where to Go Next
+
+To continue configuring your application with the selected Wavefront Java SDK, click the corresponding link in the table below.
 
 <table id="SDKlevels" style="width: 100%">
 <tr>
