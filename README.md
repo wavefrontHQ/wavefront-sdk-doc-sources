@@ -109,8 +109,6 @@ The common content is categorized based on the language. For example, the `java`
 [Apache 2.0 License](LICENSE).
 
 ## How to Contribute
-Want to contribute? Reach out to us with this good news! 
 
-* Contact Wavefront by VMware: wavefront@vmware.com
-* Slack: wavefront-public.slack.com
-* If you run into any issues, let us know by creating a GitHub issue in the specific repository.
+* Reach out to us on our public [Slack channel](https://www.wavefront.com/join-public-slack).
+* If you run into any issues, let us know by creating a GitHub issue.

@@ -56,7 +56,7 @@ ApplicationTags applicationTags = new ApplicationTags.Builder(application, servi
 
 ## Where to Go Next
 
-To continue configuring your application with the selected Wavefront Java SDK, click the corresponding link in the table below.
+To continue, select one of the Wavefront Java SDK links in the table below.
 
 <table id="SDKlevels" style="width: 100%">
 <tr>
