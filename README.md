@@ -3,10 +3,10 @@
 Wavefront supports a suite of open source SDKs that developers can use to instrument applications for observability. The instrumented application collects and sends metrics, histograms, and/or trace data to Wavefront for storage and visualization.
 
 ## Table of Content
-* [What's In This Repository](#What's-In-This-Repository)
+* [What's In This Repository](#whats-in-this-repository)
 * [Wavefront SDKs](#Wavefront-SDKs)
 * [License](#License)
-* [How to Contribute](#How-toContribute)
+* [How to Contribute](#how-to-contribute)
 
 ## What's In This Repository
 

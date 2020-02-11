@@ -6,7 +6,7 @@
 * [Option 1: Sending Data via the Wavefront Proxy](#Option-1-Sending-Data-via-the-Wavefront-Proxy)
 * [Option 2: Sending Data via Direct ingestion](#Option-2-Sending-Data-via-Direct-ingestion)
 * [Share a WavefrontSender](#Share-a-WavefrontSender)
-* [Where to Go Next](#Where-toGoNext)
+* [Where to Go Next](#where-to-go-next)
 
 ## Overview
 
