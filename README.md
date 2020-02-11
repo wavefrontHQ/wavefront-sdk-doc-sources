@@ -8,7 +8,7 @@ Wavefront supports a suite of open source SDKs that developers can use to instru
 * [License](#License)
 * [How to Contribute](#How-toContribute)
 
-## What's in this repository
+## What's In This Repository
 
 This repository contains documentation common to several Wavefront SDKs. We expect that you'll read this information as part of learning about one of the SDKs. It's not meant for standalone consumption.
 
