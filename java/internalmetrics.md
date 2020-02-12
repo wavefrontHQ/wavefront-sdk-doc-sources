@@ -18,7 +18,7 @@ If you are sending data to Wavefront via the Wavefront proxy using a `WavefrontP
 * [Tracing Handler](#Tracing-Handler)
 
 ### Metric Points Handler
-| Metric Name|Metric Type|Description|
+| Name|Type|Description|
 |:---|:---:|:---|
 |~sdk.java.core.sender.proxy.points.discarded.count                     |Counter    |Points discarded due to port(s) that were not configured.|
 |~sdk.java.core.sender.proxy.points.valid.count                         |Counter    |Valid points received.|
@@ -34,7 +34,7 @@ If you are sending data to Wavefront via the Wavefront proxy using a `WavefrontP
 |~sdk.java.core.sender.proxy.metricHandler.socket.reset.errors.count    |Counter    |Unsuccessful connection resets.|
 
 ### Histogram Distributions Handler
-|Metric Name|Metric Type|Description|
+|Name|Type|Description|
 |:---|:---:|:---|
 |~sdk.java.core.sender.proxy.histograms.discarded.count                     |Counter    |Distributions discarded due to port(s) that were not configured.|
 |~sdk.java.core.sender.proxy.histograms.valid.count                         |Counter    |Valid distributions received.|
@@ -50,7 +50,7 @@ If you are sending data to Wavefront via the Wavefront proxy using a `WavefrontP
 |~sdk.java.core.sender.proxy.histogramHandler.socket.reset.errors.count     |Counter    |Unsuccessful connection resets.|
 
 ### Tracing Handler
-|Metric Name|Metric Type|Description|
+|Name|Type|Description|
 |:---|:---:|:---|
 |~sdk.java.core.sender.proxy.spans.discarded.count                      |Counter    |Spans discarded due to port(s) that were not configured.|
 |~sdk.java.core.sender.proxy.spans.valid.count                          |Counter    |Valid spans received.|
@@ -73,7 +73,7 @@ If you directly sending data to Wavefront using a `WavefrontDirectIngestionClien
 * [Tracing Spans Ingestion](#Tracing-Spans-Ingestion)
 
 ### Metric Points Ingestion
-|Metric Name|Metric Type|Description|
+|Name|Type|Description|
 |:---|:---:|:---|
 |~sdk.java.core.sender.direct.points.queue.size                 |Gauge      |Points in ingestion buffer.|
 |~sdk.java.core.sender.direct.points.queue.remaining_capacity   |Gauge      |Remaining capacity of ingestion buffer.|
@@ -84,7 +84,7 @@ If you directly sending data to Wavefront using a `WavefrontDirectIngestionClien
 |~sdk.java.core.sender.direct.points.report.202.count           |Counter    |Report requests by response status code.|
 
 ### Histogram Distributions Ingestion
-|Metric Name|Metric Type|Description|
+|Name|Type|Description|
 |:---|:---:|:---|
 |~sdk.java.core.sender.direct.histograms.queue.size                 |Gauge      |Distributions in ingestion buffer.|
 |~sdk.java.core.sender.direct.histograms.queue.remaining_capacity   |Gauge      |Remaining capacity of ingestion buffer.|
@@ -95,7 +95,7 @@ If you directly sending data to Wavefront using a `WavefrontDirectIngestionClien
 |~sdk.java.core.sender.direct.histograms.report.202.count           |Counter    |Report requests by response status code.|
 
 ### Tracing Spans Ingestion
-|Metric Name|Metric Type|Description|
+|Name|Type|Description|
 |:---|:---:|:---|
 |~sdk.java.core.sender.direct.spans.queue.size                  |Gauge      |Spans in ingestion buffer.|
 |~sdk.java.core.sender.direct.spans.queue.remaining_capacity    |Gauge      |Remaining capacity of ingestion buffer.|
