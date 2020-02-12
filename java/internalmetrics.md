@@ -13,8 +13,12 @@ Wavefront Java SDKs automatically collect a suite of diagnostic metrics that all
 ## Metrics Collected When Using the Wavefront Proxy
 If you are sending data to Wavefront via the Wavefront proxy using a `WavefrontProxyClient` instance, the following diagnostic metrics are reported:
 
+* [Metric Points Handler](#Metric-Points-Handler)
+* [Histogram Distributions Handler](#Histogram-Distributions-Handler)
+* [Tracing Handler](#Tracing-Handler)
+
 ### Metric Points Handler
-| <div style="width:290px">Metric Name</div>|Metric Type|Description|
+| Metric Name|Metric Type|Description|
 |:---|:---:|:---|
 |~sdk.java.core.sender.proxy.points.discarded.count                     |Counter    |Points discarded due to unconfigured port|
 |~sdk.java.core.sender.proxy.points.valid.count                         |Counter    |Valid points received|
@@ -30,7 +34,7 @@ If you are sending data to Wavefront via the Wavefront proxy using a `WavefrontP
 |~sdk.java.core.sender.proxy.metricHandler.socket.reset.errors.count    |Counter    |Unsuccessful connection resets|
 
 ### Histogram Distributions Handler
-|<div style="width:290px">Metric Name</div>|Metric Type|Description|
+|Metric Name|Metric Type|Description|
 |:---|:---:|:---|
 |~sdk.java.core.sender.proxy.histograms.discarded.count                     |Counter    |Distributions discarded due to unconfigured port|
 |~sdk.java.core.sender.proxy.histograms.valid.count                         |Counter    |Valid distributions received|
@@ -63,6 +67,10 @@ If you are sending data to Wavefront via the Wavefront proxy using a `WavefrontP
 
 ## Metrics Collected When Using Direct Ingestion
 If you directly sending data to Wavefront using a `WavefrontDirectIngestionClient` instance, the following diagnostic metrics are reported:
+
+* [Metric Points Ingestion](#Metric-Points-Ingestion)
+* [Histogram Distributions Ingestion](#Histogram-Distributions-Ingestion)
+* [Tracing Spans Ingestion](#Tracing-Spans-Ingestion)
 
 ### Metric Points Ingestion
 |Metric Name|Metric Type|Description|
@@ -104,8 +112,8 @@ To continue, select one of the Wavefront Java SDK links in the table below.
 <table id="SDKlevels" style="width: 100%">
 <tr>
   <th width="10%">SDK Type</th>
-  <th width="45%">SDK Description</th>
-  <th width="45%">Java SDKs</th>
+  <th width="60%">SDK Description</th>
+  <th width="30%">Java SDKs</th>
 </tr>
 
 <tr>
