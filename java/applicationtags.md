@@ -61,8 +61,8 @@ To continue, select one of the Wavefront Java SDK links in the table below.
 <table id="SDKlevels" style="width: 100%">
 <tr>
   <th width="10%">SDK Type</th>
-  <th width="45%">SDK Description</th>
-  <th width="45%">Java SDKs</th>
+  <th width="60%">SDK Description</th>
+  <th width="30%">Java SDKs</th>
 </tr>
 
 <tr>
