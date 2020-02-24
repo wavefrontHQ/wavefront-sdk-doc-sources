@@ -27,4 +27,4 @@ Each RED metric has point tags (`application`, `service`, and `operationName`) w
 
 ## Where to Go Next
 
-To continue, select one of the [Wavefront SDKs](README.md#wavefront-sdks).
+To continue, select one of the [Wavefront SDKs](https://github.com/wavefrontHQ/wavefront-sdk-doc-sources#wavefront-sdks).
