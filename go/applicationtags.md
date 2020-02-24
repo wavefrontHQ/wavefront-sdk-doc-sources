@@ -17,45 +17,19 @@ Application tags and their values are encapsulated in a `Tags` object in your mi
 ## Required Tags
 **Required tags** enable you to drill down into the data for a particular service:
 
-<table>
-  <tr>
-    <td>
-      `application`
-    </td>
-    <td>
-      Name that identifies your Go application, for example: `OrderingApp`. All microservices in the same application should share the same application name.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      `service`
-    </td>
-    <td>
-      Name that identifies the microservice within your application, for example: `inventory`. Each microservice should have its own service name.
-    </td>
-  </tr>
-<table>
+| Tag    | Description    |
+| :------------- | :------------- |
+| `application`|  Name that identifies your Go application, for example: `OrderingApp`. All microservices in the same application should share the same application name.  |
+|   `service` | Name that identifies the microservice within your application, for example: `inventory`. Each microservice should have its own service name.   |
 
 ## Optional Tags
 **Optional tags** enable you to use the physical topology of your application to further filter your data:
-<table>
-  <tr>
-    <td>
-      `cluster`
-    </td>
-    <td>
-      Name of a group of related hosts that serves as a cluster or region in which the application runs, for example: `us-west-2`. The default value is `none`.
-    </td>
-  </tr>
-  <tr>
-    <td>
-      `shard`
-    </td>
-    <td>
-      Name of a subgroup of hosts within a cluster that serve as a partition, replica, shard, or mirror, for example: `secondary`. The default value is `none`.
-    </td>
-  </tr>
-<table>
+
+| Tag    | Description    |
+| :------------- | :------------- |
+|  `cluster` |  Name of a group of related hosts that serves as a cluster or region in which the application runs, for example: `us-west-2`. The default value is `none`. |
+|  `shard` |  Name of a subgroup of hosts within a cluster that serve as a partition, replica, shard, or mirror, for example: `secondary`. The default value is `none`. |
+
 
 Optionally, you can add custom tags specific to your application.
 
