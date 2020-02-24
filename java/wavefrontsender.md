@@ -73,7 +73,7 @@ When sending data via direct ingestion, you need to create a `WavefrontDirectIng
 > * The URL of your Wavefront instance. This is the URL you connect to when you log in to Wavefront, typically something like `https://<domain>.wavefront.com`.
 > * [Obtain the API token](http://docs.wavefront.com/wavefront_api.html#generating-an-api-token).
 
-### Step 2. Initialize the WavefrontDirectIngestionClient
+### Initialize the WavefrontDirectIngestionClient
 You initialize a `WavefrontDirectIngestionClient` by building it with the access information you obtained in Step 1.
 
 You can optionally call builder methods to tune the following ingestion properties:
