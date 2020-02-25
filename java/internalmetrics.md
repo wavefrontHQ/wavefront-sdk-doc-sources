@@ -13,9 +13,9 @@ Wavefront Java SDKs automatically collect a suite of diagnostic metrics that all
 ## Metrics Collected When Using the Wavefront Proxy
 If you are sending data to Wavefront via the Wavefront proxy using a `WavefrontProxyClient` instance, the following diagnostic metrics are reported:
 
-* [Metric Points Handler](#Metric-Points-Handler)
-* [Histogram Distributions Handler](#Histogram-Distributions-Handler)
-* [Tracing Handler](#Tracing-Handler)
+* [Metrics for Metric Point Handler](#Metrics-for-Metric-Point-Handler)
+* [Metrics for Histogram Distribution Handler](#Metrics-for-Histogram-Distribution-Handler)
+* [Metrics for Tracing Handler](#Metrics-for-Tracing-Handler)
 
 ### Metrics for Metric Point Handler
 | Name|Type|Description|
@@ -68,9 +68,9 @@ If you are sending data to Wavefront via the Wavefront proxy using a `WavefrontP
 ## Metrics Collected When Using Direct Ingestion
 If you directly sending data to Wavefront using a `WavefrontDirectIngestionClient` instance, the following diagnostic metrics are reported:
 
-* [Metric Points Ingestion](#Metric-Points-Ingestion)
-* [Histogram Distributions Ingestion](#Histogram-Distributions-Ingestion)
-* [Tracing Spans Ingestion](#Tracing-Spans-Ingestion)
+* [Metrics for Metric Point Ingestion](#Metrics-for-Metric-Point-Ingestion)
+* [Metrics for Histogram Distribution Ingestion](#Metrics-for-Histogram-Distribution-Ingestion)
+* [Metrics for Tracing Span Ingestion](#Metrics-for-Tracing-Span-Ingestion)
 
 ### Metrics for Metric Point Ingestion
 |Name|Type|Description|

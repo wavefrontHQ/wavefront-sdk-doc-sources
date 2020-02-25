@@ -128,7 +128,7 @@ DropwizardMetricsReporter metricsReporter =
 ...
 ```
 
-**Note:** If you use SDKs in different JVM processes, you must instantiate one `WavefrontSender` instance per JVM process.
+>**Note:** If you use SDKs in different JVM processes, you must instantiate one `WavefrontSender` instance per JVM process.
 
 ## Where to Go Next
 
