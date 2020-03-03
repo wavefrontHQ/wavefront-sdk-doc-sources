@@ -29,7 +29,7 @@ Application tags and their values are encapsulated in an `ApplicationTags` objec
 |  Tag  |  Description  |
 |:------|:--------------|
 | `cluster`   | Name of a group of related hosts that serves as a cluster or region in which the application will run, for example: `us-west-2`.   |
-| `shard`   | Name of a subgroup of hosts within a cluster that serve as a partition, replica, shard, or mirror, for example: `secondary`.   |
+| `shard`   | Name of a subgroup of hosts within a cluster that serves as a partition, replica, shard, or mirror, for example: `secondary`.   |
 
 
 Optionally, you can add custom tags specific to your application.
