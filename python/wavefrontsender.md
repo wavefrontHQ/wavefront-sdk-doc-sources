@@ -50,7 +50,7 @@ wavefront_sender = WavefrontProxyClient(
 )
 ```
  
-> **Note:** When you set up a Wavefront proxy on the specified proxy host, you specify the port it will listen to for each type of data to be sent. The `WavefrontProxyClient` must send data to the same ports that the Wavefront proxy listens to. Consequently, the port-related builder methods must specify the same port numbers as the corresponding proxy configuration properties. See the table given below:  
+> **Note:** When you set up a Wavefront proxy on the specified proxy host, you specify the port it will listen to for each type of data to be sent. The `WavefrontProxyClient` must send data to the same ports that the Wavefront proxy listens to. Consequently, the port-related builder methods must specify the same port numbers as the corresponding proxy configuration properties. See the following table:  
 
 | `WavefrontProxyClient()` parameter | Corresponding property in `wavefront.conf` |
 | ----- | -------- |
@@ -58,7 +58,7 @@ wavefront_sender = WavefrontProxyClient(
 | `distribution_port` | `histogramDistListenerPorts=` |
 | `tracing_port` | `traceListenerPorts=` |
 
-## Option 2: Sending Data via Direct ingestion
+## Option 2: Sending Data via Direct Ingestion
 
 When sending data via direct ingestion, you need to create a `WavefrontDirectIngestionClient`, and build it with the Wavefront URL and API token to send data directly to Wavefront.
 
