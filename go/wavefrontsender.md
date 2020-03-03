@@ -77,7 +77,7 @@ func main() {
 }
 ```
 
->**Note:** When you set up a Wavefront proxy on the specified proxy host, you specify the port it will listen to for each type of data to be sent. The proxy `Sender` must send data to the same ports that the Wavefront proxy listens to. Consequently, the port-related `Sender` configuration fields must specify the same port numbers as the corresponding proxy configuration properties: 
+>**Note:** When you set up a Wavefront proxy on the specified proxy host, you specify the port it will listen to for each type of data to be sent. The proxy `Sender` must send data to the same ports that the Wavefront proxy listens to. Consequently, the port-related `Sender` configuration fields must specify the same port numbers as the corresponding proxy configuration properties. See the following table:
 
 | `ProxyConfiguration` field | Corresponding property in `wavefront.conf` |
 | ----- | -------- |
@@ -86,7 +86,7 @@ func main() {
 | `TracingPort` | `traceListenerPorts=` |
  
 
-## Option 2: Sending Data via Direct ingestion
+## Option 2: Sending Data via Direct Ingestion
 
 When sending data via direct ingestion, you need to create a direct `Sender` and configure it to send data directly to Wavefront.
 

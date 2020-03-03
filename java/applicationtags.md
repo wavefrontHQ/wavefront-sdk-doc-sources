@@ -13,7 +13,6 @@ Many Wavefront SDKs require you to specify _application tags_ that describe the 
 
 Application tags and their values are encapsulated in an `ApplicationTags` object in your microservice’s code. Because the tags describe the application’s architecture as it is deployed, your code typically obtains values for the tags from a YAML configuration file, either provided by the SDK or through a custom mechanism implemented by your application.
 
-
 ## Required Tags
 **Required tags** enable you to drill down into the data for a particular service:
 

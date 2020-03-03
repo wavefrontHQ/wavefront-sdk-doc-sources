@@ -55,7 +55,7 @@ wfProxyClientBuilder.flushIntervalSeconds(2);
 // Create the WavefrontProxyClient
 WavefrontSender wavefrontSender = wfProxyClientBuilder.build();
  ```
-**Note:** When you set up a Wavefront proxy on the specified proxy host, you specify the port it will listen to for each type of data to be sent. The `WavefrontProxyClient` must send data to the same ports that the Wavefront proxy listens to. Consequently, the port-related builder methods must specify the same port numbers as the corresponding proxy configuration properties: 
+> **Note:** When you set up a Wavefront proxy on the specified proxy host, you specify the port it will listen to for each type of data to be sent. The `WavefrontProxyClient` must send data to the same ports that the Wavefront proxy listens to. Consequently, the port-related builder methods must specify the same port numbers as the corresponding proxy configuration properties. See the following table: 
 
 | `WavefrontProxyClient` builder method | Corresponding property in `wavefront.conf` |
 | ----- | -------- |
@@ -64,7 +64,7 @@ WavefrontSender wavefrontSender = wfProxyClientBuilder.build();
 | `tracingPort()` | `traceListenerPorts=` |
  
 
-## Option 2: Sending Data via Direct ingestion
+## Option 2: Sending Data via Direct Ingestion
 
 When sending data via direct ingestion, you need to create a `WavefrontDirectIngestionClient`, and build it with the Wavefront URL and API token to send data directly to Wavefront.
 
@@ -74,7 +74,7 @@ When sending data via direct ingestion, you need to create a `WavefrontDirectIng
 > * [Obtain the API token](http://docs.wavefront.com/wavefront_api.html#generating-an-api-token).
 
 ### Initialize the WavefrontDirectIngestionClient
-You initialize a `WavefrontDirectIngestionClient` by building it with the access information you obtained in Step 1.
+You initialize a `WavefrontDirectIngestionClient` by building it with the access information you obtained obtained in the Prerequisite section.
 
 You can optionally call builder methods to tune the following ingestion properties:
 
