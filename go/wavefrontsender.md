@@ -39,7 +39,7 @@ To create a proxy `Sender`, you configure it with a `ProxyConfiguration` that in
 * One or more proxy listening ports to send data to. The ports you specify depend on the kinds of data you want to send (metrics, histograms, and/or trace data). You must specify at least one listener port. 
 * Optional setting for tuning communication with the proxy.
 
-> **Note**: See [Advanced Proxy Configuration and Installation](https://docs.wavefront.com/proxies_configuring.html) for details
+> **Note**: See [Advanced Proxy Configuration and Installation](https://docs.wavefront.com/proxies_configuring.html) for details.
 
 ```go
 import (

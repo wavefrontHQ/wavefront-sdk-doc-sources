@@ -30,7 +30,7 @@ When sending data via the Wavefront proxy, you need to create a `WavefrontProxyC
 * One or more proxy listening ports to send data to. The ports you specify depend on the kinds of data you want to send (metrics, histograms, and/or trace data). You must specify at least one listener port. 
 * Optional settings for tuning communication with the proxy.
 
-> **Note**: See [Advanced Proxy Configuration and Installation](https://docs.wavefront.com/proxies_configuring.html) for details:
+> **Note**: See [Advanced Proxy Configuration and Installation](https://docs.wavefront.com/proxies_configuring.html) for details.
 
 ```python
 from wavefront_sdk import WavefrontProxyClient
