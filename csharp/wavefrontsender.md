@@ -5,8 +5,10 @@
 * [Overview](#Overview)
 * [Option 1: Sending Data via the Wavefront Proxy](#Option-1-Sending-Data-via-the-Wavefront-Proxy)
 * [Option 2: Sending Data via Direct ingestion](#Option-2-Sending-Data-via-Direct-ingestion)
-* [Share a WavefrontSender](#Share-a-Wavefront-Sender)
+* [Share an IWavefrontSender Instance](#Share-an-IWavefrontSender-Instance)
 * [Where to Go Next](#where-to-go-next)
+
+## Overview
 
 You can send metrics, histograms, or trace data from your application to the Wavefront service using a Wavefront proxy or direct ingestions.
 
