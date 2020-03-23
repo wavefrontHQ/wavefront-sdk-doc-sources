@@ -91,7 +91,7 @@ func main() {
 When sending data via direct ingestion, you need to create a direct `Sender` and configure it to send data directly to Wavefront.
 
 >**Prerequisite**
-> * Verify that you have the Direct Data Ingestion permission. For details, see [Examine Groups and Permissions](https://docs.wavefront.com/users_account_managing.html#examine-groups-and-permissions).
+> * Verify that you have the Direct Data Ingestion permission. For details, see [Examine Groups and Permissions](https://docs.wavefront.com/users_account_managing.html#examine-groups-roles-and-permissions).
 > * The URL of your Wavefront instance. This is the URL you connect to when you log in to Wavefront, typically something like `https://<domain>.wavefront.com`.
 > * [Obtain the API token](http://docs.wavefront.com/wavefront_api.html#generating-an-api-token).
 
