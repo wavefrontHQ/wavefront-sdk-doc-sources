@@ -31,7 +31,7 @@ Application tags and their values are encapsulated in a `Tags` object in your mi
 |  `shard` |  Name of a subgroup of hosts within a cluster that serve as a partition, replica, shard, or mirror, for example: `secondary`. The default value is `none`. |
 
 
-Optionally, you can add custom tags specific to your application.
+Optionally, you can add custom tags specific to your application or add environment variables as custom tags.
 
 ## Example
 
@@ -48,6 +48,16 @@ Setting the optional `cluster` and `shard` tags:
 ```
 appTags.Cluster = "us-west-2"
 appTags.Shard = "primary"
+```
+
+Adding all environment variables with names starting with MY_ as custom tags:
+```go
+appTags.AddCustomTagsFromEnv("^MY_.*$")
+```
+
+Adding the environment variable POD_NAME as the custom tag with the tag name pod_name:
+```go
+appTags.AddCustomTagFromEnv("POD_NAME", "pod_name")
 ```
 
 ## Where to Go Next
