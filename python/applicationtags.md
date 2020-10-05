@@ -32,7 +32,7 @@ Application tags and their values are encapsulated in an `ApplicationTags` objec
 | `shard`   | Name of a subgroup of hosts within a cluster that serves as a partition, replica, shard, or mirror, for example: `secondary`.   |
 
 
-Optionally, you can add custom tags specific to your application.
+Optionally, you can add custom tags specific to your application or add environment variables as custom tags.
 
 ## Example
 
@@ -46,6 +46,10 @@ application_tags = ApplicationTags(application="OrderingApp",
                                    cluster="us-west-2",
                                    shard="secondary",
                                    custom_tags=[("location", "Oregon")])
+# Add all environment variables with names starting with MY_ as custom tags.
+application_tags.add_custom_tags_from_env("^MY_.*$")
+# Add the environment variable POD_NAME as the custom tag with the tag name pod_name.
+application_tags.add_custom_tag_from_env("pod_name", "POD_NAME")
 ```
 
 ## Where to Go Next
