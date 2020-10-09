@@ -2,10 +2,10 @@
 
 ## Table of Content
 
-* [Overview](#Overview)
-* [Option 1: Sending Data via the Wavefront Proxy](#Option-1-Sending-Data-via-the-Wavefront-Proxy)
-* [Option 2: Sending Data via Direct ingestion](#Option-2-Sending-Data-via-Direct-ingestion)
-* [Share a WavefrontSender](#Share-a-WavefrontSender)
+* [Overview](#overview)
+* [Option 1: Sending Data via the Wavefront Proxy](#option-1-sending-data-via-the-wavefront-proxy)
+* [Option 2: Sending Data via Direct ingestion](#option-2-sending-data-via-direct-ingestion)
+* [Share a WavefrontSender](#share-a-wavefront-sender)
 * [Where to Go Next](#where-to-go-next)
 
 ## Overview
