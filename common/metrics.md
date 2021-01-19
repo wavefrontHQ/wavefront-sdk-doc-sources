@@ -8,12 +8,12 @@ To provide full [3D Observability](https://www.wavefront.com/wavefront-enhances-
 
 The `WavefrontTracer` derives the RED metrics from your spans automatically, with no additional configuration or instrumentation on your part. To visualize the out-of-the-box metrics and histograms in the default Wavefront Service Dashboard:
 
-1. Select **Applications -> Service Dashboard** in the Wavefront taskbar. 
+1. Select **Applications > Service Dashboard** in the Wavefront taskbar. 
 1. Use the filters to find your application and its services.
 
 The Service Dashboard displays the derived RED metrics for a service in these auto-generated charts: Request Rate, Error Rate, Duration (P95), Top Requests, Top Failed Requests, and Slowest Requests.
 
-The following table shows the name and type of the RED metrics that the Wavefront Tracer derives from your spans:
+The following table shows the name and type of the RED metrics that the WavefrontTracer derives from your spans:
 
 | Metric Name       | Metric Type | Description       |
 | ----------------- | ----------- | ----------------- |
