@@ -20,14 +20,14 @@ Let's create a `WavefrontClient` to send data to Wavefront either via Wavefront 
 
 > **Deprecated implementations**: *`WavefrontDirectIngestionClient` and `WavefrontProxyClient` are deprecated from proxy version 7.0 onwards. We recommend all new applications to use `WavefrontClient`.*
 
-Use `WavefrontClientFactory` to create a `WavefrontClient` instance, which can send data directly to a Wavefront service or send data using a Wavefront Proxy.
-The `WavefrontClientFactory` supports multiple client bindings. If more than one client configuration is specified, you can create a `WavefrontMultiClient` to send multiple Wavefront services.
+* Use `WavefrontClientFactory` to create a `WavefrontClient` instance, which can send data directly to a Wavefront service or send data using a Wavefront Proxy.
+* The `WavefrontClientFactory` supports multiple client bindings. If more than one client configuration is specified, you can create a `WavefrontMultiClient` to send multiple Wavefront services.
 
 ## Option 1: Sending Data via the Wavefront Proxy
 
 ### Prerequisites
 
-* Before your application can use a `WavefrontProxyClient`, you must [set up and start a Wavefront proxy](https://docs.wavefront.com/proxies_installing.html).
+Before your application can use a `WavefrontProxyClient`, you must [set up and start a Wavefront proxy](https://docs.wavefront.com/proxies_installing.html).
 
 ### Initialize the WavefrontClient
 
@@ -39,7 +39,8 @@ Optionally, you can call factory methods to tune the following ingestion propert
 * Flush interval - Interval for flushing data from the `WavefrontSender` directly to Wavefront.
 * Batch size - Amount of data to send to Wavefront in each flush interval.
 
-Together, the batch size and flush interval control the maximum theoretical throughput of the `WavefrontSender`. Override the defaults _only_ to set higher values.
+Together, the batch size and flush interval control the maximum theoretical throughput of the `WavefrontSender`. 
+> **Note**: Override the defaults values only when you want to set higher values.
 
 **Example**: Use a factory class to create a WavefrontClient and send data to Wavefront via Wavefront Proxy. 
 
@@ -94,7 +95,8 @@ Optionally, you can call factory methods to tune the following ingestion propert
 * Flush interval - Interval for flushing data from the `WavefrontSender` directly to Wavefront.
 * Batch size - Amount of data to send to Wavefront in each flush interval.
 
-Together, the batch size and flush interval control the maximum theoretical throughput of the `WavefrontSender`. Override the defaults _only_ to set higher values.
+Together, the batch size and flush interval control the maximum theoretical throughput of the `WavefrontSender`. 
+> **Note**: Override the defaults values only when you want to set higher values.
 
 **Example**: Use a factory class to create a WavefrontClient and send  data to Wavefront via direct ingestion.
 
