@@ -10,98 +10,145 @@
 
 ## Overview
 
-You can send metrics, histograms, or trace data from your application to the Wavefront service using a Wavefront proxy or direct ingestions.
+You can send metrics, histograms, delta counters, or trace data from your application to the Wavefront service using a Wavefront proxy or direct ingestion. 
 
 * Use a [**Wavefront proxy**](https://docs.wavefront.com/proxies.html), which then forwards the data to the Wavefront service. This is the recommended choice for a large-scale deployment that needs resilience to internet outages, control over data queuing and filtering, and more.
-* Use [**direct ingestion**](https://docs.wavefront.com/direct_ingestion.html) to send the data directly to the Wavefront service. This is the simplest way to get up and running quickly. 
+* Use [**direct ingestion**](https://docs.wavefront.com/direct_ingestion.html) to send the data directly to the Wavefront service. This is the simplest way to get up and running quickly.
 
-The `WavefrontSender` interface has two implementations:
+Let's create a `WavefrontClient` to send data to Wavefront either via Wavefront proxy or directly over HTTP.
 
-* Option 1: [Create a `WavefrontProxyClient`](#Option-1-Sending-Data-via-the-Wavefront-Proxy) to send data to a Wavefront proxy.
-* Option 2: [Create a `WavefrontDirectIngestionClient`](#Option-2-Sending-Data-via-Direct-ingestion) to send data directly to a Wavefront service.
+> **Deprecated implementations**: *`WavefrontDirectIngestionClient` and `WavefrontProxyClient` are deprecated from Wavefront proxy version 7.0 onwards. We recommend all new applications to use `WavefrontClient`.*
 
-## Option 1: Sending Data via the Wavefront Proxy
+* Use `WavefrontClientFactory` to create a `WavefrontClient` instance, which can send data directly to a Wavefront service or send data using a Wavefront proxy.
+* The `WavefrontClientFactory` supports multiple client bindings. If more than one client configuration is specified, you can create a `WavefrontMultiClient` to send data to multiple Wavefront services.
 
->**Prerequisite**
->Before your application can use a `WavefrontProxyClient`, you must [set up and start a Wavefront proxy](https://docs.wavefront.com/proxies_installing.html).
+## Option 1: Sending Data via the Wavefront proxy
 
-When sending data via the Wavefront proxy, you need to create a `WavefrontProxyClient`. Include the following information.
+### Prerequisites
 
-* The name of the host that will run the Wavefront proxy.
-* One or more proxy listening ports to send data to. The ports you specify depend on the kinds of data you want to send (metrics, histograms, and/or trace data). You must specify at least one listener port. 
-* Optional settings for tuning communication with the proxy.
+* If you want to send data via the Wavefront proxy, you must [set up and start a Wavefront proxy](https://docs.wavefront.com/proxies_installing.html), before you initialize the WavefrontClient.
+* Verify that you have the Proxies permission. For details, see [Examine Groups, Roles, and Permissions](https://docs.wavefront.com/users_account_managing.html#examine-groups-roles-and-permissions).
 
-> **Note**: See [Advanced Proxy Configuration and Installation](https://docs.wavefront.com/proxies_configuring.html) for details.
+### Initialize the WavefrontClient
 
-```java
-// Create the builder with the proxy hostname or address
-WavefrontProxyClient.Builder wfProxyClientBuilder = new WavefrontProxyClient.Builder(proxyHostName);
+You initialize a `WavefrontClient` as shown in the examples below.
 
-// Set the proxy port to send metrics to. Default: 2878
-wfProxyClientBuilder.metricsPort(2878);
+Optionally, you can call factory methods to tune the following ingestion properties:
 
-// Set a proxy port to send histograms to.  Recommended: 2878
-wfProxyClientBuilder.distributionPort(2878);
-
-// Set a proxy port to send trace data to. Recommended: 30000
-wfProxyClientBuilder.tracingPort(30_000);
-
-// Optional: Set a custom socketFactory to override the default SocketFactory
-wfProxyClientBuilder.socketFactory(<SocketFactory>);
-
-// Optional: Set a nondefault interval (in seconds) for flushing data from the sender to the proxy. Default: 5 seconds
-wfProxyClientBuilder.flushIntervalSeconds(2);
-
-// Create the WavefrontProxyClient
-WavefrontSender wavefrontSender = wfProxyClientBuilder.build();
- ```
-> **Note:** When you set up a Wavefront proxy on the specified proxy host, you specify the port it will listen to for each type of data to be sent. The `WavefrontProxyClient` must send data to the same ports that the Wavefront proxy listens to. Consequently, the port-related builder methods must specify the same port numbers as the corresponding proxy configuration properties. See the following table: 
-
-| `WavefrontProxyClient` builder method | Corresponding property in `wavefront.conf` |
-| ----- | -------- |
-| `metricsPort()` | `pushListenerPorts=` |
-| `distributionPort()` | `histogramDistListenerPorts=` |
-| `tracingPort()` | `traceListenerPorts=` |
- 
-
-## Option 2: Sending Data via Direct Ingestion
-
-When sending data via direct ingestion, you need to create a `WavefrontDirectIngestionClient`, and build it with the Wavefront URL and API token to send data directly to Wavefront.
-
->**Prerequisite**
-> * Verify that you have the Direct Data Ingestion permission. For details, see [Examine Groups, Roles, and Permissions](https://docs.wavefront.com/users_account_managing.html#examine-groups-roles-and-permissions).
-> * The URL of your Wavefront instance. This is the URL you connect to when you log in to Wavefront, typically something like `https://<domain>.wavefront.com`.
-> * [Obtain the API token](http://docs.wavefront.com/wavefront_api.html#generating-an-api-token).
-
-### Initialize the WavefrontDirectIngestionClient
-You initialize a `WavefrontDirectIngestionClient` by building it with the access information you obtained obtained in the Prerequisite section.
-
-You can optionally call builder methods to tune the following ingestion properties:
-
-* Max queue size - Internal buffer capacity of the `WavefrontSender`. Any data in excess of this size is dropped.
+* Max queue size - Internal buffer capacity of the `WavefrontSender`. Data that exceeds this size is dropped.
 * Flush interval - Interval for flushing data from the `WavefrontSender` directly to Wavefront.
 * Batch size - Amount of data to send to Wavefront in each flush interval.
 
-Together, the batch size and flush interval control the maximum theoretical throughput of the `WavefrontSender`. Override the defaults _only_ to set higher values.
+Together, the batch size and flush interval control the maximum theoretical throughput of the `WavefrontSender`. 
+> **Note**: Override the default values only when you want to set higher values.
+
+**Example**: Use a factory class to create a WavefrontClient and send data to Wavefront via Wavefront proxy. 
 
 ```java
-// Create a builder with the Wavefront URL and a Wavefront API token
-// that was created with direct ingestion permission.
-WavefrontDirectIngestionClient.Builder wfDirectIngestionClientBuilder =
-  new WavefrontDirectIngestionClient.Builder(wavefrontURL, token);
+// Add a client with the following URL format: "proxy://<your.proxy.load.balancer.com>:<port>" or "http://<host>:<port>/"
+// to send data to proxies
+WavefrontClientFactory wavefrontClientFactory = new WavefrontClientFactory();
+wavefrontClientFactory.addClient(wavefrontURL);
 
-// Optional: Override the max queue size (in data points). Default: 50,000
-wfDirectIngestionClientBuilder.maxQueueSize(100_000);
+WavefrontSender wavefrontSender = wavefrontClientFactory.getClient();
+```
+**Example**: Use a builder to create a WavefrontClient and send data to Wavefront via Wavefront proxy. 
 
-// Optional: Override the batch size (in data points). Default: 10,000
-wfDirectIngestionClientBuilder.batchSize(20_000);
+```java
+// Using the WavefrontClient.Builder directly with a url in the form of "http://<your.proxy.load.blanacer>:<port>"
+// to send data to proxies.
+WavefrontClient.Builder wfClientBuilder = new WavefrontClient.Builder(proxyURL);
 
-// Optional: Override the flush interval (in seconds). Default: 1 second
-wfDirectIngestionClientBuilder.flushIntervalSeconds(2);
+// This is the size of internal buffer beyond which data is dropped
+// Optional: Set this to override the default max queue size of 50,000
+wfClientBuilder.maxQueueSize(100_000);
 
-// Create a WavefrontDirectIngestionClient.
-WavefrontSender wavefrontSender = wfDirectIngestionClientBuilder.build();
- ```
+// This is the max batch of data sent per flush interval
+// Optional: Set this to override the default batch size of 10,000
+wfClientBuilder.batchSize(20_000);
+
+// Together with batch size controls the max theoretical throughput of the sender
+// Optional: Set this to override the default flush interval value of 1 second
+wfClientBuilder.flushIntervalSeconds(2);
+
+WavefrontSender wavefrontSender = wfClientBuilder.build();
+``` 
+
+## Option 2: Sending Data via Direct Ingestion
+
+### Prerequisites
+
+* Verify that you have the Direct Data Ingestion permission. For details, see [Examine Groups, Roles, and Permissions](https://docs.wavefront.com/users_account_managing.html#examine-groups-roles-and-permissions).
+* The HTTP URL of your Wavefront instance. This is the URL you connect to when you log in to Wavefront, typically something like `http://<domain>.wavefront.com`.
+* [Obtain the API token](http://docs.wavefront.com/wavefront_api.html#generating-an-api-token).
+
+### Initialize the WavefrontClient
+
+You initialize a `WavefrontClient` by building it with the information you obtained in the Prerequisites section.
+
+Optionally, you can call factory methods to tune the following ingestion properties:
+
+* Max queue size - Internal buffer capacity of the `WavefrontSender`. Data that exceeds this size is dropped.
+* Flush interval - Interval for flushing data from the `WavefrontSender` directly to Wavefront.
+* Batch size - Amount of data to send to Wavefront in each flush interval.
+
+Together, the batch size and flush interval control the maximum theoretical throughput of the `WavefrontSender`. 
+> **Note**: Override the default values only when you want to set higher values.
+
+**Example**: Use a factory class to create a WavefrontClient and send data to Wavefront via direct ingestion.
+
+```java
+// Create a factory and add a client with the following URL format: "http://TOKEN@DOMAIN.wavefront.com"
+// and a Wavefront API token with direct ingestion permission
+WavefrontClientFactory wavefrontClientFactory = new WavefrontClientFactory();
+
+// Add a new client that sends data directly to Wavefront services 
+wavefrontClientFactory.addClient(wavefrontURL);
+
+WavefrontSender wavefrontSender = wavefrontClientFactory.getClient();
+```
+
+**Example**: Use a builder to create a WavefrontClient and send  data to Wavefront via direct ingestion.
+
+```java
+// Using the WavefrontClient.Builder directly with a url in the form of "https://DOMAIN.wavefront.com"
+// and a Wavefront API token with direct ingestion permission
+WavefrontClient.Builder wfClientBuilder = new WavefrontClient.Builder(wavefrontURL, token);
+
+// This is the size of internal buffer beyond which data is dropped
+// Optional: Set this to override the default max queue size of 50,000
+wfClientBuilder.maxQueueSize(100_000);
+
+// This is the max batch of data sent per flush interval
+// Optional: Set this to override the default batch size of 10,000
+wfClientBuilder.batchSize(20_000);
+
+// Together with batch size controls the max theoretical throughput of the sender
+// Optional: Set this to override the default flush interval value of 1 second
+wfClientBuilder.flushIntervalSeconds(2);
+
+WavefrontSender wavefrontSender = wfClientBuilder.build();
+``` 
+
+ <!--
+ ## Send Data to Multiple Wavefront Services
+
+Use `WavefrontMultiClient` to send data to multiple Wavefront services so you handle the data traffic.
+The `addClient()` supports null for batch size, queue size, and push interval. The defaults values are used if nothing is specified.
+
+**Example**: Creating a `WavefrontMultiClient` to send data to multiple Wavefront services.
+```java
+// Add multiple URLs to the Factory to obtain a multi-sender
+WavefrontClientFactory wavefrontClientFactory = new WavefrontClientFactory();
+wavefrontClientFactory.addClient("https://someToken@DOMAIN.wavefront.com");
+wavefrontClientFactory.addClient("proxy://our.proxy.lb.com:2878");
+// If you are directly using the sender SDK to send spans without using any other SDK, use the same port as the customTracingListenerPorts configured in the wavefront proxy. Assume you have installed and started the proxy on <proxyHostname>. See https://docs.wavefront.com/tracing_instrumenting_frameworks.html#instrument-your-application-with-wavefront-sender-sdks for details.
+wavefrontClientFactory.addClient("http://<proxy_hostname>:30001/");
+
+WavefrontSender wavefrontSender = wavefrontClientFactory.getClient();
+```
+
+-->
 
 ## Share a WavefrontSender
 
@@ -112,7 +159,7 @@ For example, the following snippet shows how to use the same `WavefrontSender` w
 ```java
 
 // Create a WavefrontSender
-WavefrontSender wavefrontSender = buildProxyOrDirectSender(); // pseudocode
+WavefrontSender wavefrontSender = buildWavefrontClient(); // pseudocode
 
 // Create a WavefrontSpanReporter for the OpenTracing SDK
 Reporter spanReporter = new WavefrontSpanReporter.Builder().
