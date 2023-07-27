@@ -25,27 +25,6 @@ The common content is categorized based on the language. For example, the `java`
 </tr>
 
 <tr>
-  <td><a href="https://docs.wavefront.com/wavefront_sdks.html#sdks-for-collecting-trace-data">OpenTracing SDK</a></td>
-  <td align="justify">Implements the OpenTracing specification. Lets you define, collect, and report custom trace data from any part of your application code. <br>Automatically derives RED metrics from the reported spans. </td> 
-  <td>
-    <ul>
-    <li>
-      <b>Java</b>: <a href ="https://github.com/wavefrontHQ/wavefront-opentracing-sdk-java">OpenTracing SDK</a> <b>|</b> <a href ="https://github.com/wavefrontHQ/wavefront-opentracing-bundle-java">Tracing Agent</a>
-    </li>
-    <li>
-      <b>Python</b>: <a href ="https://github.com/wavefrontHQ/wavefront-opentracing-sdk-python">OpenTracing SDK</a>
-    </li>
-    <li>
-      <b>Go</b>: <a href ="https://github.com/wavefrontHQ/wavefront-opentracing-sdk-go">OpenTracing SDK</a>
-    </li>
-    <li>
-      <b>.Net/C#</b>: <a href ="https://github.com/wavefrontHQ/wavefront-opentracing-sdk-csharp">OpenTracing SDK</a>
-    </li>
-    </ul>
-  </td>
-</tr>
-
-<tr>
   <td><a href="https://docs.wavefront.com/wavefront_sdks.html#sdks-for-collecting-metrics-and-histograms">Metrics SDK</a></td>
   <td align="justify">Implements a standard metrics library. Lets you define, collect, and report custom business metrics and histograms from any part of your application code.   </td> 
   <td>
@@ -55,12 +34,6 @@ The common content is categorized based on the language. For example, the `java`
     </li>
     <li>
     <b>Python</b>: <a href ="https://github.com/wavefrontHQ/wavefront-pyformance">Pyformance SDK</a>
-    </li>
-    <li>
-      <b>Go</b>: <a href ="https://github.com/wavefrontHQ/go-metrics-wavefront">Go Metrics SDK</a>
-    </li>
-    <li>
-    <b>.Net/C#</b>: <a href ="https://github.com/wavefrontHQ/wavefront-appmetrics-sdk-csharp">App Metrics SDK</a>
     </li>
     </ul>
   </td>
@@ -72,10 +45,7 @@ The common content is categorized based on the language. For example, the `java`
   <td>
     <ul>
     <li><b>Java</b>:
-    <a href="https://github.com/wavefrontHQ/wavefront-dropwizard-sdk-java">Dropwizard</a> <b>|</b> <a href="https://github.com/wavefrontHQ/wavefront-gRPC-sdk-java">gRPC</a> <b>|</b> <a href="https://github.com/wavefrontHQ/wavefront-jaxrs-sdk-java">JAX-RS</a> <b>|</b> <a href="https://github.com/wavefrontHQ/wavefront-jersey-sdk-java">Jersey</a></li>
-    <li><b>.Net/C#</b>: 
-    <a href="https://github.com/wavefrontHQ/wavefront-aspnetcore-sdk-csharp">ASP.Net core</a> </li>
-    <!--- [Python](wavefront_sdks_python.html#python-sdks-that-instrument-frameworks) --->
+    <a href="https://github.com/wavefrontHQ/wavefront-dropwizard-sdk-java">Dropwizard</a></li>
     </ul>
   </td>
 </tr>
@@ -104,8 +74,6 @@ The common content is categorized based on the language. For example, the `java`
     </ul>
   </td>
 </tr>
-
-</tbody>
 </table> 
 
 ## License 
